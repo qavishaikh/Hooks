@@ -8,7 +8,7 @@ function App() {
     // alert("USe Effect")
     console.log("UseEffect")
     console.log("Updating", count);
-  }
+  },[count]
   );
   return (
     <div className="App">
