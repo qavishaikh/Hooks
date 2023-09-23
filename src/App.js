@@ -1,35 +1,31 @@
-import react, {useState, useEffect} from 'react';
-import './App.css';
-import User from './UserTotal'
+import React from 'react'
+import './App.css'
+import './Style.css'
+import Style from './Style.module.css'
+import './Style.scss'
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [total, setTotal] = useState(100);
-
-  useEffect(() => {
-    // alert("USe Effect")
-    // console.log("After Count")
-  },[count]
-  );
-  useEffect(() => {
-    // alert("USe Effect")
-    // console.log("After total")
-  },[total]
-  );
+  const headline = {
+    color:"white",
+    backgroundColor:"blue",
+    fontStyle:"bold"
+  }
   return (
-    <div className="App">
-     <h1>UseEffect Hooks</h1>
+    <div className='App'>
+      <h1>Styling Css in react</h1>
+      {/* Inline Css */}
+      <h1 style={{color:"White",backgroundColor:"pink"}}>Inline Method</h1>
 
-      <User count={count} total={total}/>
+      <h1 className="primary">Normal Method</h1>
 
-     {/* <h2>Count: {count}</h2> */}
-     <button onClick={() => setCount(count + 1)}>Update Count</button>
+      <h1 style={headline}>CSS in JS Method</h1>
 
-     {/* <h2>Total: {total}</h2> */}
-     <button onClick={() => setTotal(total + 1)}>Update Total</button>
+      <h1 className={Style.tittle}>CSS Module Method</h1>
+
+      <h1 className='primary-sass'>Style in <span>SASS</span>  & <span>SCSS</span> Method</h1>
 
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
