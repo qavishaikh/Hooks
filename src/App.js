@@ -1,45 +1,25 @@
-import React from 'react'
-import './App.css'
-import Button from './Button'
-import List from './List'
-
-
+import React, { useState } from 'react';
+import './App.css';
+import Child from './Child';
+import ChildB from './ChildB';
 
 function App() {
-  const handleClickMe = () => {
-    console.log("Click Me !")
-  }
-  const handleButtonClick = () => {
-    console.log("Button Clicked !")
-  }
-  const handleSubmit = () => {
-    console.log("Sbbmit !")
-  }
-  const handleDelete = () => {
-    console.log("Delete Clicked !")
-  }
+  const [sharedState, setSharedState] = useState(""); // Corrected the usage of useState
 
-  const Countries = ["Pakistan","India","USA","Srilanka","Bangladesh","Germany"]
-  const Cities = ["Hyd","Karachi","Nawabshah","Sakhar","Dadu","Bhitshah"]
-  
+  const handleChange = (newValue) => {
+    console.log(newValue);
+    setSharedState(newValue);
+  };
+
   return (
     <div className='App'>
-      <h1>Reusable Components in React</h1>
-     
-     <Button  text= "Click Me" onClick={handleClickMe}/>
-     <Button  text= "Button" onClick={handleButtonClick}/>
-     <Button  text= "Submit" onClick={handleSubmit}/>
-     <Button  text= "Delete" onClick={handleDelete}/>
+      <h1> Lifting State in React</h1>
 
-      <br></br>
+      <Child sharedState={sharedState} handleChange={handleChange}/>
 
-     <div>
-        <List items={Countries}/>
-        <List items={Cities}/>
-
-     </div>
+      <ChildB sharedState={sharedState} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
