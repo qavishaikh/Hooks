@@ -1,23 +1,19 @@
 import React, { useState } from 'react';
 import './App.css';
-import Child from './Child';
-import ChildB from './ChildB';
+import Children from './ChildrenComponent'
 
 function App() {
-  const [sharedState, setSharedState] = useState(""); // Corrected the usage of useState
 
-  const handleChange = (newValue) => {
-    console.log(newValue);
-    setSharedState(newValue);
-  };
+  const [count, setCount] = useState(0);
+
+  console.log("parent Component");
 
   return (
     <div className='App'>
-      <h1> Lifting State in React</h1>
-
-      <Child sharedState={sharedState} handleChange={handleChange}/>
-
-      <ChildB sharedState={sharedState} />
+      <h1> Memo in React</h1>
+    <Children />
+      <h3>Count : {count}</h3>
+      <button onClick={() => setCount(count + 1)}> Count+</button>
     </div>
   );
 }
