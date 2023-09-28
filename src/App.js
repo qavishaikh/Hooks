@@ -1,39 +1,28 @@
-import React, { Component, createRef } from "react";
+import React, { useRef } from "react";
 import "./App.css";
 
-class App extends Component {
-  constructor() {
-    super();
-    this.myInputRef = createRef();
-  }
-
+function App() {
   // Example 1
-  // componentDidMount() {
-  //   this.myInputRef.current.value = "Qavi Shaikh!";
-  //   console.log(this.myInputRef.current.value);
-  // }
+  const inputRef = useRef(null);
+  console.log("Rendring")
 
   // Example 2
-  handleClick = () => {
-    this.myInputRef.current.focus();
-    this.myInputRef.current.style.background = "yellow";
-    this.myInputRef.current.style.color = "black";
-
-    console.log(this.myInputRef.current.value);
+  const handleButtonClick = () => {
+    const inputValue = inputRef.current.value;
+    inputRef.current.style.background='pink';
+    inputRef.current.style.colour = 'black';
+    alert(`Input Value: ${inputValue}`);
+    console.log(`Input Value: ${inputValue}`);
   };
 
-  render() {
-    // console.log(this.myInputRef);
-    return (
-      <div className="App">
-        <h1>Ref In React Class Component</h1>
+  return (
+    <div className="App">
+      <h1>useRef In React.</h1>
 
-        {/* Example 1 */}
-
-        <input type="text" ref={this.myInputRef} />
-        <button onClick={this.handleClick}>Focus Input</button>
-      </div>
-    );
-  }
+      {/* Example 1 */}
+      <input ref={inputRef} type="text" />
+      <button onClick={handleButtonClick}>Get Input Value</button>
+    </div>
+  );
 }
 export default App;
