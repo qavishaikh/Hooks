@@ -1,38 +1,39 @@
-import React, { useState, useMemo } from 'react';
-import './App.css';
+import React, { Component, createRef } from "react";
+import "./App.css";
 
-function App() {
+class App extends Component {
+  constructor() {
+    super();
+    this.myInputRef = createRef();
+  }
 
-  const [count, setCount] = useState(0);
-  const [number1, setNumber1] = useState(0);
-  const [number2, setNumber2] = useState(0);
+  // Example 1
+  // componentDidMount() {
+  //   this.myInputRef.current.value = "Qavi Shaikh!";
+  //   console.log(this.myInputRef.current.value);
+  // }
 
-// const sum = () => {
-//   console.log("Calculating Sum...!");
-//   return parseInt(number1) + parseInt(number2);
-// };
+  // Example 2
+  handleClick = () => {
+    this.myInputRef.current.focus();
+    this.myInputRef.current.style.background = "yellow";
+    this.myInputRef.current.style.color = "black";
 
-const sum = useMemo(() => {
-  console.log("Calculating Sum...!");
-  return parseInt(number1) + parseInt(number2);
-},[number1,number2]);
+    console.log(this.myInputRef.current.value);
+  };
 
-  return (
-    <div className='App'>
-      <h1> Use Memo in React</h1>
-    
-    <input type="number" value={number1} onChange={(e) => setNumber1(e.target.value)} />
-    <input type="number" value={number2} onChange={(e) => setNumber2(e.target.value)} />
+  render() {
+    // console.log(this.myInputRef);
+    return (
+      <div className="App">
+        <h1>Ref In React Class Component</h1>
 
-    {/* <h4>Sum : {sum()}</h4> */}
+        {/* Example 1 */}
 
-    <h4>Sum : {sum}</h4>
-
-
-    <h3>Count Number : {count}</h3>
-    <button onClick={() => setCount(count + 1)}>Count ++</button>
-    </div>
-  );
+        <input type="text" ref={this.myInputRef} />
+        <button onClick={this.handleClick}>Focus Input</button>
+      </div>
+    );
+  }
 }
-
 export default App;
