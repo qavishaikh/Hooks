@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import './DynamicUseRefExample.css'; // Import your CSS file for styling
+import './DynamicUseRefExample.css'; 
 
 function DynamicUseRefExample() {
   const inputRef = useRef(null);
